@@ -6,6 +6,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Home } from "./Screens/Home";
 import { Registration } from "./Screens/RegistrationScreen";
 import { Login } from "./Screens/LoginScreen";
+import Comment from "./Screens/CommentsScreen";
+import Map from "./Screens/MapScreen";
 
 const OtherStack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -37,6 +39,16 @@ export const useRoute = (isAuth) => {
         options={{ headerShown: false }}
         name="Home"
         component={Home}
+      />
+      <OtherStack.Screen
+        options={{ headerShown: false }}
+        name="Comment"
+        component={Comment}
+      />
+      <OtherStack.Screen
+        options={{ headerShown: false }}
+        name="Map"
+        component={Map}
       />
     </OtherStack.Navigator>
   );

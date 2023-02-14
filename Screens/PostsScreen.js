@@ -19,6 +19,12 @@ function Post({ navigation, route }) {
 
   const [posts, setPosts] = useState([]);
 
+  useEffect(() => {
+    if (route.params) {
+      setPosts((prevState) => [...prevState, route.params]);
+    }
+  }, [route.params]);
+
   if (!fontsLoaded || !posts) {
     return null;
   }
@@ -29,7 +35,7 @@ function Post({ navigation, route }) {
         <View
           style={{ width: 24, height: 24, backgroundColor: "transparent" }}
         />
-        <Text style={styles.title}>Публікації</Text>
+        <Text style={styles.title}>Публикации</Text>
         <TouchableOpacity style={styles.logout}>
           <Image source={require("../assets/img/log-out.jpg")} />
         </TouchableOpacity>
@@ -45,7 +51,6 @@ function Post({ navigation, route }) {
             <Text style={styles.email}>Email</Text>
           </View>
         </View>
-
         <View style={styles.posts}>
           <FlatList
             data={posts}
@@ -54,19 +59,13 @@ function Post({ navigation, route }) {
               <View style={styles.postItem}>
                 <View>
                   <Image
-                    style={styles.postImage}
                     source={{ uri: item.photo }}
+                    style={{ width: 350, height: 200 }}
                   />
                 </View>
                 <View style={styles.credentials}>
                   <Text style={styles.postName}>{item.name}</Text>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
+                  <View style={styles.postMedia}>
                     <View
                       style={{
                         flexDirection: "row",
@@ -75,7 +74,7 @@ function Post({ navigation, route }) {
                     >
                       <TouchableOpacity
                         onPress={() =>
-                          navigation.navigate("Comments", {
+                          navigation.navigate("Comment", {
                             photo: item.photo,
                             postId: item.id,
                           })
@@ -173,6 +172,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 32,
     justifyContent: "center",
+    alignItems: "center",
   },
   postItem: {
     marginTop: 35,
@@ -195,6 +195,11 @@ const styles = StyleSheet.create({
     fontFamily: "RobotoMedium",
     fontSize: 16,
     marginBottom: 8,
+  },
+  postMedia: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 });
 

@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     borderTopColor: "#BDBDBD",
   },
   photoContainer: {
-    width: 343,
+    width: 375,
     height: 240,
     borderWidth: 1,
     borderColor: "#E8E8E8",
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
   },
   delete: {
     marginBottom: 34,
-    marginTop: 1,
+    marginTop: 20,
     alignSelf: "center",
     width: 70,
     height: 40,
