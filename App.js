@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
-import { useRoute } from "./router";
+import Main from "./components/Main";
 
 export default function App() {
-  const routing = useRoute({});
-  return <NavigationContainer>{routing}</NavigationContainer>;
+  return (
+    <Provider store={store}>
+      <Main />
+    </Provider>
+  );
 }
